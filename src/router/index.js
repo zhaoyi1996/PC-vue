@@ -4,6 +4,8 @@ import HelloWorld from '@/components/HelloWorld'
 import Index from '@/components/Index/Index'
 import List from '@/components/Index/List'
 import Details from '@/components/Index/Details'
+import Login from '@/components/Index/Login'
+import Perslnfo from '@/components/Index/Perslnfo'
 Vue.use(Router)
 
 export default new Router({
@@ -20,6 +22,14 @@ export default new Router({
       path: '/details',
       name: 'Details',
       component: Details
+    },{
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },{
+      path: '/persinfo',
+      name: 'Perslnfo',
+      component: Perslnfo
     }
   ]
 })
