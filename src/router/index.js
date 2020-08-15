@@ -6,6 +6,8 @@ import List from '@/components/Index/List'
 import Details from '@/components/Index/Details'
 import Login from '@/components/Index/Login'
 import Perslnfo from '@/components/Index/Perslnfo'
+import Search from '@/components/Index/Search'
+
 Vue.use(Router)
 
 export default new Router({
@@ -30,6 +32,10 @@ export default new Router({
       path: '/persinfo',
       name: 'Perslnfo',
       component: Perslnfo
+    },{
+      path: '/search',
+      name: 'Search',
+      component: Search
     }
   ]
 })
