@@ -65,7 +65,8 @@
             </div>
             <div class="layui-form-item">
               <div class="layui-input-block">
-                <input type="password"  name="" v-model="password" lay-verify="required" id="imgCode" placeholder="密码" autocomplete="off" class="layui-input">
+                <input type="text"  name="" lay-verify="required" id="imgCode" placeholder="验证码" autocomplete="off" class="layui-input">
+                <img src="https://fly.layui.com/auth/imagecode?t=1542856673772">
               </div>
             </div>
             <div class="layui-form-item">
@@ -74,11 +75,20 @@
                 <input type="button" @click="sendCode"  id="veriCodeBtn" name="" value="验证码" class="obtain layui-btn">
               </div>
             </div>
+            <div class="layui-form-item">
+              <div class="layui-input-block">
+                <input type="password"  name="" v-model="password" lay-verify="required" id="imgCode" placeholder="请输入密码" autocomplete="off" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <div class="layui-input-block">
+                <input type="password"  name="" v-model="password" lay-verify="required" id="imgCode" placeholder="请输入确认密码" autocomplete="off" class="layui-input">
+              </div>
+            </div>
             <div class="layui-form-item agreement">
               <div class="layui-input-block">
                 <input type="checkbox" name="like1[write]" lay-verify="required" lay-skin="primary" title="我已阅读并同意" checked="">
                 <span class="txt"><a href="#">用户协议</a>和<a  href="#">隐私条款</a></span>
-
               </div>
             </div>
             <div class="layui-form-item">
@@ -129,7 +139,7 @@ export default {
     }
   },
   mounted() {
-
+    
   }
 }
 </script>
