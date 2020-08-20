@@ -29,7 +29,10 @@
         <div class="login">
           <a href="login.html">
             登录
-          </a>
+          </a>|
+          <router-link :to="{name:'Register'}">
+            注册
+          </router-link>
           <!-- <a href="login.html"> -->
           <!-- <img src="@/assets/static/images/header.png" style="width: 36px; height: 36px;"> -->
           <!-- </a> -->
