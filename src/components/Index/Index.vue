@@ -54,14 +54,18 @@
     <div class="layui-fulid micronews-banner w1000">
       <div class="layui-carousel imgbox" id="micronews-carouse">
         <div carousel-item>
-          <div>
-            <p class="title">去南非旅行需要做什么准备</p>
-            <a href="list.html"><img src="@/assets/static/images/news_img1.jpg"></a>
+
+          <div v-for="(v,k) in news_lunbo" :key="k">
+            <p class="title">{{v.n_title}}</p>
+            <a href="list.html"><img src="@/assets/static/images/news_img11.jpg"></a>
+            <p class="title">{{v.n_title}}</p>
           </div>
-          <div>
-            <p class="title">去南非旅行需要做什么准备</p>
-            <a href="list.html"><img src="@/assets/static/images/news_img1.jpg"></a>
-          </div>
+
+          <!--<div>-->
+            <!--<p class="title">去南非旅行需要做什么准备</p>-->
+            <!--<a href="list.html"><img src="@/assets/static/images/news_img11.jpg"></a>-->
+          <!--</div>-->
+
         </div>
       </div>
     </div>
@@ -401,9 +405,26 @@ export default {
   name: 'Index',
   data () {
     return {
-
+        news_lunbo:[],
     }
-  }
+  },
+    mounted(){
+        layui.use('index',function(){
+        var index = layui.index;
+        index.banner()
+        index.seachBtn()
+        index.arrowutil()
+    });
+        //渲染轮播图
+        this.$http.post('/api/lunbo',{}).then(response=>{
+
+            console.log(response);
+            this.news_lunbo=response.body;
+        },error=>{
+            console.log(error);
+            return false;
+        })
+    }
 }
 </script>
 
