@@ -29,14 +29,11 @@
         <div class="login">
           <a href="login.html">
             登录
-<<<<<<< HEAD
-          </a>
-=======
           </a>|
           <router-link :to="{name:'Register'}">
             注册
           </router-link>
->>>>>>> f9f8f5dfc8f2b9908aa826596642a2c4d9e1149f
+
           <!-- <a href="login.html"> -->
           <!-- <img src="@/assets/static/images/header.png" style="width: 36px; height: 36px;"> -->
           <!-- </a> -->
@@ -59,38 +56,35 @@
 
     <div class="micronews-login-container">
       <div class="form-box">
-<<<<<<< HEAD
+
         <h3>登录</h3>
-=======
+
         <h3>注册</h3>
->>>>>>> f9f8f5dfc8f2b9908aa826596642a2c4d9e1149f
         <div class="wrap">
           <form class="layui-form"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
             <div class="layui-form-item">
               <div class="layui-input-block">
-<<<<<<< HEAD
+
                 <input type="text" name="" lay-verify="required|phone" id="phone" v-model="phone" placeholder="请输入手机号" autocomplete="off" class="layui-input">
-=======
                 <input type="text" name="" v-model="phone" lay-verify="required|phone" id="phone" placeholder="请输入手机号" autocomplete="off" class="layui-input">
->>>>>>> f9f8f5dfc8f2b9908aa826596642a2c4d9e1149f
+
               </div>
             </div>
             <div class="layui-form-item">
               <div class="layui-input-block">
-<<<<<<< HEAD
+
                 <input type="text"  name="" lay-verify="required" id="imgCode" v-model="imgCode" autocomplete="off" class="layui-input">
-=======
                 <input type="text"  name="" lay-verify="required" id="imgCode" placeholder="验证码" autocomplete="off" class="layui-input">
->>>>>>> f9f8f5dfc8f2b9908aa826596642a2c4d9e1149f
+
                 <img src="https://fly.layui.com/auth/imagecode?t=1542856673772">
               </div>
             </div>
             <div class="layui-form-item">
               <div class="layui-input-block">
-<<<<<<< HEAD
+
                 <input type="text"  name="" lay-verify="required" placeholder="请输入短信验证码" autocomplete="off" class="layui-input">
                 <input type="button" v-model="noteCode" id="veriCodeBtn" name="" value="验证码" class="obtain layui-btn">
-=======
+
                 <input type="text"  name="" v-model="code" lay-verify="required" placeholder="请输入短信验证码" autocomplete="off" class="layui-input">
                 <input type="button" @click="sendCode"  id="veriCodeBtn" name="" value="验证码" class="obtain layui-btn">
               </div>
@@ -103,26 +97,23 @@
             <div class="layui-form-item">
               <div class="layui-input-block">
                 <input type="password"  name="" v-model="password" lay-verify="required" id="imgCode" placeholder="请输入确认密码" autocomplete="off" class="layui-input">
->>>>>>> f9f8f5dfc8f2b9908aa826596642a2c4d9e1149f
+
               </div>
             </div>
             <div class="layui-form-item agreement">
               <div class="layui-input-block">
                 <input type="checkbox" name="like1[write]" lay-verify="required" lay-skin="primary" title="我已阅读并同意" checked="">
                 <span class="txt"><a href="#">用户协议</a>和<a  href="#">隐私条款</a></span>
-<<<<<<< HEAD
 
-=======
->>>>>>> f9f8f5dfc8f2b9908aa826596642a2c4d9e1149f
               </div>
             </div>
             <div class="layui-form-item">
               <div class="layui-input-block">
-<<<<<<< HEAD
+
                 <button class="layui-btn" lay-submit lay-filter="*" onclick="return false">注册</button>
-=======
+
                 <button class="layui-btn" lay-submit lay-filter="*" onclick="return false">登录</button>
->>>>>>> f9f8f5dfc8f2b9908aa826596642a2c4d9e1149f
+
               </div>
             </div>
             <!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览 -->
@@ -142,63 +133,44 @@
 </template>
 
 <script>
-<<<<<<< HEAD
+
   import '@/assets/layui/css/layui.css'
   import '@/assets/static/css/main.css'
   import '@/assets/layui/layui.js'
 
 export default {
   name: 'register',
-  data () {
+  data() {
     return {
-      phone:'15932818907',
+      phone: '15932818907',
       imgCode: '请输入图片验证码',
-      noteCode:'请输入短信验证码',
-    }
-  },
-  method:{
-
-  },
-  //页面加载事件
-  mounted(){
-    //获取二维码
-    this.$http.post('/api',{}).then(success=>{
-      console.log(success);
-    },error=>{
-      alert(111);
-    })
-
-  },
-=======
-import '@/assets/layui/css/layui.css'
-import '@/assets/static/css/main.css'
-import '@/assets/layui/layui.js'
-
-export default {
-  name: 'Login',
-  data () {
-    return {
+      noteCode: '请输入短信验证码',
       //请求连接
-      codeUrl:'http://api.practice1.com/',
-      phone:'',
-      password:'',
-      code:'',
+      codeUrl: 'http://api.practice1.com/',
+      password: '',
+      code: '',
     }
   },
-  methods:{
-    sendCode:function(){
-      if(this.phone==''){
+  methods: {
+    sendCode: function () {
+      if (this.phone == '') {
         alert('请输入手机号，进行收取验证码。')
       }
-      if(this.phone.length!=11){
+      if (this.phone.length != 11) {
         alert('手机号长度')
       }
     }
   },
+  //页面加载事件
   mounted() {
-    
-  }
->>>>>>> f9f8f5dfc8f2b9908aa826596642a2c4d9e1149f
+    //获取二维码
+    this.$http.post('/api', {}).then(success => {
+      console.log(success);
+    }, error => {
+      alert(111);
+    })
+
+  },
 }
 </script>
 

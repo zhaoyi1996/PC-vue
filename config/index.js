@@ -11,23 +11,13 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api':{
-<<<<<<< HEAD
         // 转发到该域名
         target: 'http://team.yisirdisco.cn/',
         // 开启代理
         changeOrigin: true,
         pathRewrite: {
-          '^/api' : ''
+          '^/api': ''
         }
-=======
-        //转发至该域名
-          target:  'http://www.1911admin.com',
-          //开启代理
-          changeOrigin: true,
-          pathRewrite: {
-            '^/api' : ''
-          }
->>>>>>> f9f8f5dfc8f2b9908aa826596642a2c4d9e1149f
       }
     },
 

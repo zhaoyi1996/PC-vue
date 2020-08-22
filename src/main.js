@@ -6,20 +6,17 @@ import router from './router'
 // 引入http请求相关类库
 import VueResource from 'vue-resource'
 //使用http请求相关类库
-Vue.use(VueResource)
+ Vue.use(VueResource)
 // 确保post请求不会被转换为 options 请求
 Vue.http.options.emulateJSON = true
 
 
-import VueResource from 'vue-resource'
+
 Vue.config.productionTip = false
 
 
-//使用http请求相关类库
-Vue.use(VueResource)
 
-//确保post请求不会被转化为options请求
-Vue.http.options.emulateJSON = true
+
 /* eslint-disable no-new */
 new Vue({
     el: '#app',
