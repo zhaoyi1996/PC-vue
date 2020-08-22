@@ -7,7 +7,11 @@ import Details from '@/components/Index/Details'
 import Login from '@/components/Index/Login'
 import Perslnfo from '@/components/Index/Perslnfo'
 import Search from '@/components/Index/Search'
+<<<<<<< HEAD
+import Register from '@/components/Index/Register'
+=======
 import Register from "@/components/Index/Register";
+>>>>>>> f9f8f5dfc8f2b9908aa826596642a2c4d9e1149f
 
 Vue.use(Router)
 
