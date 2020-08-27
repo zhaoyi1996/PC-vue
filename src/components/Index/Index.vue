@@ -215,9 +215,8 @@ export default {
   mounted(){
     this.$http.post('/api/',{}).then(success=>{
       this.info=success.body.data;
-      console.log(this.info);
     },error=>{
-      alert(111);
+      alert(error);
     });
     layui.use('index',function(){
         var index = layui.index;
@@ -227,7 +226,6 @@ export default {
     });
     //渲染轮播图
     this.$http.post('/api/lunbo',{}).then(response=>{
-        console.log(response);
         this.news_lunbo=response.body;
     },error=>{
         console.log(error);
