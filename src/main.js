@@ -12,10 +12,11 @@ Vue.use(VueResource)
 
 // 确保post请求不会被转换为 options 请求
 Vue.http.options.emulateJSON = true
+
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  router,
-  components: { App },
-  template: '<App/>'
+    el: '#app',
+    router,
+    components: { App },
+    template: '<App/>'
 })

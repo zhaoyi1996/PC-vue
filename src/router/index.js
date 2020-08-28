@@ -7,7 +7,10 @@ import Details from '@/components/Index/Details'
 import Login from '@/components/Index/Login'
 import Perslnfo from '@/components/Index/Perslnfo'
 import Search from '@/components/Index/Search'
-import Register from "@/components/Index/Register";
+
+import Register from '@/components/Index/Register'
+
+
 
 Vue.use(Router)
 

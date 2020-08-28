@@ -33,6 +33,7 @@
           <router-link :to="{name:'Register'}">
             注册
           </router-link>
+
           <!-- <a href="login.html"> -->
           <!-- <img src="@/assets/static/images/header.png" style="width: 36px; height: 36px;"> -->
           <!-- </a> -->
@@ -61,6 +62,7 @@
             <div class="layui-form-item">
               <div class="layui-input-block">
                 <input type="text" name="" v-model="phone" lay-verify="required|phone" id="phone" placeholder="请输入手机号" autocomplete="off" class="layui-input">
+
               </div>
             </div>
             <div class="layui-form-item">
@@ -84,12 +86,14 @@
             <div class="layui-form-item">
               <div class="layui-input-block">
                 <input type="password"  name="" v-model="password" lay-verify="required" id="imgCode" placeholder="请输入确认密码" autocomplete="off" class="layui-input">
+
               </div>
             </div>
             <div class="layui-form-item agreement">
               <div class="layui-input-block">
                 <input type="checkbox" name="like1[write]" lay-verify="required" lay-skin="primary" title="我已阅读并同意" checked="">
                 <span class="txt"><a href="#">用户协议</a>和<a  href="#">隐私条款</a></span>
+
               </div>
             </div>
             <div class="layui-form-item">
@@ -119,13 +123,14 @@
 </template>
 
 <script>
-import '@/assets/layui/css/layui.css'
-import '@/assets/static/css/main.css'
-import '@/assets/layui/layui.js'
+
+  import '@/assets/layui/css/layui.css'
+  import '@/assets/static/css/main.css'
+  import '@/assets/layui/layui.js'
 
 export default {
-  name: 'Login',
-  data () {
+  name: 'register',
+  data() {
     return {
       //图片验证码地址
       imageCodeUrl:'http://api.practice1.com/reg/imageCode',
@@ -142,11 +147,12 @@ export default {
       if(this.phone==''){
         alert('请输入手机号，进行收取验证码。')
       }
-      if(this.phone.length!=11){
+      if (this.phone.length != 11) {
         alert('手机号长度')
       }
     }
   },
+  //页面加载事件
   mounted() {
     this.$http.post('/api/reg/getImgCodeUrl').then(success=>{
       console.log(success)

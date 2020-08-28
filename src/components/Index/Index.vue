@@ -57,14 +57,18 @@
     <div class="layui-fulid micronews-banner w1000">
       <div class="layui-carousel imgbox" id="micronews-carouse">
         <div carousel-item>
-          <div>
-            <p class="title">去南非旅行需要做什么准备</p>
-            <a href="list.html"><img src="@/assets/static/images/news_img1.jpg"></a>
+
+          <div v-for="(v,k) in news_lunbo" :key="k">
+            <p class="title">{{v.n_title}}</p>
+            <a href="list.html"><img src="@/assets/static/images/news_img11.jpg"></a>
+            <p class="title">{{v.n_title}}</p>
           </div>
-          <div>
-            <p class="title">去南非旅行需要做什么准备</p>
-            <a href="list.html"><img src="@/assets/static/images/news_img1.jpg"></a>
-          </div>
+
+          <!--<div>-->
+            <!--<p class="title">去南非旅行需要做什么准备</p>-->
+            <!--<a href="list.html"><img src="@/assets/static/images/news_img11.jpg"></a>-->
+          <!--</div>-->
+
         </div>
       </div>
     </div>
@@ -76,227 +80,30 @@
           <div class="layui-col-xs12 layui-col-sm12 layui-col-md8">
             <div class="main">
               <div class="list-item" id="LAY_demo2">
+                <template v-for="(v,k) in info">
+                  <router-link :to="{name:'Details',query:{news_id:v.news_id}}">
                 <div class="item">
-                  <a href="details.html">
-                    <img src="@/assets/static/images/news_img11.jpg">
-                  </a>
+                    <img style="height: 100px;width: 200px;" :src="v.news_image">
                   <div class="item-info">
-                    <h4><a href="details.html">北京的卫生部门调查五星级酒店清洁 “丑闻” 已现场取样，还消费者真相</a></h4>
+                    <h4><a href="details.html">{{ v.news_title }}</a></h4>
                     <div class="b-txt">
-                      <span class="label">娱乐</span>
+                      <span class="label">{{ v.cate_name }}</span>
                       <span class="icon message">
                       <i class="layui-icon layui-icon-dialogue"></i>
                       500条
                     </span>
                       <span class="icon time">
                       <i class="layui-icon layui-icon-log"></i>
-                      10分钟前
+                      {{ v.publish_time_desc }}
                     </span>
                     </div>
                   </div>
                 </div>
-                <div class="item">
-                  <a href="details.html">
-                    <img src="@/assets/static/images/news_img12.jpg">
-                  </a>
-                  <div class="item-info">
-                    <h4><a href="details.html">渝广快速一车上万件快递全被烧光，双11战果泡汤</a></h4>
-                    <div class="b-txt">
-                      <span class="label">娱乐</span>
-                      <span class="icon message">
-                      <i class="layui-icon layui-icon-dialogue"></i>
-                      500条
-                    </span>
-                      <span class="icon time">
-                      <i class="layui-icon layui-icon-log"></i>
-                      10分钟前
-                    </span>
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <div class="item-info">
-                    <h4><a href="details.html">渝广快速一车上万件快递全被烧光，双11战果泡汤</a></h4>
-                    <div class="b-txt">
-                      <span class="label">娱乐</span>
-                      <span class="icon message">
-                      <i class="layui-icon layui-icon-dialogue"></i>
-                      500条
-                    </span>
-                      <span class="icon time">
-                      <i class="layui-icon layui-icon-log"></i>
-                      10分钟前
-                    </span>
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <a href="details.html">
-                    <img src="@/assets/static/images/news_img13.jpg">
-                  </a>
-                  <div class="item-info">
-                    <h4><a href="details.html">教育部发布教师职业行为十项准则</a></h4>
-                    <div class="b-txt">
-                      <span class="label">财经</span>
-                      <span class="icon message">
-                      <i class="layui-icon layui-icon-dialogue"></i>
-                      500条
-                    </span>
-                      <span class="icon time">
-                      <i class="layui-icon layui-icon-log"></i>
-                      10分钟前
-                    </span>
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <a href="details.html">
-                    <img src="@/assets/static/images/news_img14.jpg">
-                  </a>
-                  <div class="item-info">
-                    <h4><a href="details.html">赵丽颖婚后首部电视剧开播！刚开场剧情相当惊险谍战大片的感觉！</a></h4>
-                    <div class="b-txt">
-                      <span class="label">娱乐</span>
-                      <span class="icon message">
-                      <i class="layui-icon layui-icon-dialogue"></i>
-                      500条
-                    </span>
-                      <span class="icon time">
-                      <i class="layui-icon layui-icon-log"></i>
-                      10分钟前
-                    </span>
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <div class="item-info">
-                    <h4><a href="details.html">想要头发好只要不洗头？ 英国女子留1.83米长发自爆近20年没洗过</a></h4>
-                    <div class="b-txt">
-                      <span class="label">娱乐</span>
-                      <span class="icon message">
-                      <i class="layui-icon layui-icon-dialogue"></i>
-                      500条
-                    </span>
-                      <span class="icon time">
-                      <i class="layui-icon layui-icon-log"></i>
-                      10分钟前
-                    </span>
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <a href="details.html">
-                    <img src="@/assets/static/images/news_img7.jpg">
-                  </a>
-                  <div class="item-info">
-                    <h4><a href="details.html">独居女孩防身用利器！</a></h4>
-                    <div class="b-txt">
-                      <span class="label">生活</span>
-                      <span class="icon message">
-                      <i class="layui-icon layui-icon-dialogue"></i>
-                      500条
-                    </span>
-                      <span class="icon time">
-                      <i class="layui-icon layui-icon-log"></i>
-                      10分钟前
-                    </span>
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <a href="details.html">
-                    <img src="@/assets/static/images/news_img8.jpg">
-                  </a>
-                  <div class="item-info">
-                    <h4><a href="details.html">女司机刚拿车”！女司机刚拿驾照就撞车，老公“敢怒不敢言”贴8张纸提醒</a></h4>
-                    <div class="b-txt">
-                      <span class="label">娱乐</span>
-                      <span class="icon message">
-                      <i class="layui-icon layui-icon-dialogue"></i>
-                      500条
-                    </span>
-                      <span class="icon time">
-                      <i class="layui-icon layui-icon-log"></i>
-                      10分钟前
-                    </span>
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <a href="details.html">
-                    <img src="@/assets/static/images/news_img9.jpg">
-                  </a>
-                  <div class="item-info">
-                    <h4><a href="details.html">教育部发布教师职业行为十项准则</a></h4>
-                    <div class="b-txt">
-                      <span class="label">生活</span>
-                      <span class="icon message">
-                      <i class="layui-icon layui-icon-dialogue"></i>
-                      500条
-                    </span>
-                      <span class="icon time">
-                      <i class="layui-icon layui-icon-log"></i>
-                      10分钟前
-                    </span>
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <a href="details.html">
-                    <img src="@/assets/static/images/news_img3.jpg">
-                  </a>
-                  <div class="item-info">
-                    <h4><a href="details.html">赵丽颖婚后首部电视剧开播！刚开场剧情相当惊险谍战大片的感觉！</a></h4>
-                    <div class="b-txt">
-                      <span class="label">娱乐</span>
-                      <span class="icon message">
-                      <i class="layui-icon layui-icon-dialogue"></i>
-                      500条
-                    </span>
-                      <span class="icon time">
-                      <i class="layui-icon layui-icon-log"></i>
-                      10分钟前
-                    </span>
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <a href="details.html">
-                    <img src="@/assets/static/images/news_img11.jpg">
-                  </a>
-                  <div class="item-info">
-                    <h4><a href="details.html">想要头发好只要不洗头？ 英国女子留1.83米长发自爆近20年没洗过</a></h4>
-                    <div class="b-txt">
-                      <span class="label">娱乐</span>
-                      <span class="icon message">
-                      <i class="layui-icon layui-icon-dialogue"></i>
-                      500条
-                    </span>
-                      <span class="icon time">
-                      <i class="layui-icon layui-icon-log"></i>
-                      10分钟前
-                    </span>
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <a href="details.html">
-                    <img src="@/assets/static/images/news_img10.jpg">
-                  </a>
-                  <div class="item-info">
-                    <h4><a href="details.html">牛油果吃的对身体的好处</a></h4>
-                    <div class="b-txt">
-                      <span class="label">生活</span>
-                      <span class="icon message">
-                      <i class="layui-icon layui-icon-dialogue"></i>
-                      500条
-                    </span>
-                      <span class="icon time">
-                      <i class="layui-icon layui-icon-log"></i>
-                      10分钟前
-                    </span>
-                    </div>
-                  </div>
+                  </router-link>
+                </template>
+                <div class="b-txt">
+                  <span class="label" @click="more">加载更多。。。</span>
+
                 </div>
               </div>
             </div>
@@ -404,9 +211,68 @@ export default {
   name: 'Index',
   data () {
     return {
-
+        info:[],
+        news_lunbo:[],
+        page:2,
     }
-  }
+
+  },
+  //页面加载
+  mounted(){
+    this.$http.post('/api/',{}).then(success=>{
+      this.info=success.body.data;
+    },error=>{
+      alert(error);
+    });
+    layui.use('index',function(){
+        var index = layui.index;
+        index.banner()
+        index.seachBtn()
+        index.arrowutil()
+    });
+    //渲染轮播图
+    this.$http.post('/api/lunbo',{}).then(response=>{
+        this.news_lunbo=response.body;
+    },error=>{
+        console.log(error);
+        return false;
+    });
+    //热门咨询
+    this.$http.post('/api/heat')
+  },
+  methods:{
+    timetoDate(time){
+      let obj=new Date(time * 1000);
+      let year=obj.getFullYear();
+      let month=obj.getMonth();
+      let day=obj.getDay();
+      let hour=obj.getHours();
+      if(hour <10){
+        hour= '' +0 + hour;
+      }
+      let minutes=obj.getMinutes();
+      let seconds=obj.getSeconds();
+      return ''+year+'-'+month+'-'+day+' '+hour+':'+minutes+':'+seconds;
+    },
+    //加载更多
+    more:function(){
+      let pages=this.page++;
+      this.$http.post('/api/',{page:pages}).then(response=>{
+        this.info=this.info.concat(response.body.data);
+        console.log(this.info);
+      },error=>{
+        console.log(error);
+      });
+    }
+  },
+  watch: {
+    info: function(val){
+      for(let i in val ){
+        this.info[i].publish_time_desc=this.timetoDate(val[i].publish_time);
+      }
+    }
+  },
+
 }
 </script>
 

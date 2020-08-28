@@ -57,32 +57,30 @@
           <form class="layui-form"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
             <div class="layui-form-item">
               <div class="layui-input-block">
-                <input type="text" name="" lay-verify="required|phone" id="phone" placeholder="请输入手机号" autocomplete="off" class="layui-input">
+                <input type="text" name="" lay-verify="required|phone" id="phone" placeholder="请输入手机号" autocomplete="off" class="layui-input"v-model="phone">
               </div>
             </div>
             <div class="layui-form-item">
               <div class="layui-input-block">
-                <input type="text"  name="" lay-verify="required" id="imgCode" placeholder="验证码" autocomplete="off" class="layui-input">
-                <img src="https://fly.layui.com/auth/imagecode?t=1542856673772">
-              </div>
-            </div>
-            <div class="layui-form-item">
-              <div class="layui-input-block">
-                <input type="text"  name="" lay-verify="required" placeholder="请输入短信验证码" autocomplete="off" class="layui-input">
-                <input type="button"  id="veriCodeBtn" name="" value="验证码" class="obtain layui-btn">
-              </div>
-            </div>
-            <div class="layui-form-item agreement">
-              <div class="layui-input-block">
-                <input type="checkbox" name="like1[write]" lay-verify="required" lay-skin="primary" title="我已阅读并同意" checked="">
-                <span class="txt"><a href="#">用户协议</a>和<a  href="#">隐私条款</a></span>
+                <input type="password"  name="" lay-verify="required" id="imgCode" placeholder="密码" autocomplete="off" class="layui-input"v-model="password">
 
               </div>
             </div>
+
+
             <div class="layui-form-item">
               <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="*" onclick="return false">登录</button>
+                <button class="layui-btn" lay-submit lay-filter="*"type="button" @click="login">登录</button>
+
               </div>
+
+            </div>
+            <div class="layui-form-item">
+              <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="*" @click=""onclick="return false">注册</button>
+
+              </div>
+
             </div>
             <!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览 -->
           </form>
@@ -104,14 +102,56 @@
   import '@/assets/layui/css/layui.css'
   import '@/assets/static/css/main.css'
   import '@/assets/layui/layui.js'
-
+  // import Common from '@/mixins/common.js'
 export default {
   name: 'Login',
   data () {
     return {
-
+        phone:'',
+        password:''
     }
+  },
+
+  methods:{
+      login:function () {
+          //前台验证
+          if(this.phone==""){
+             alert('请输入手机号码');
+              return false;
+          }
+          if(this.password==""){
+              alert("请输入密码");
+              return false;
+          }
+          let api_login = {
+              phone:this.phone,
+              password:this.password,
+          };
+          //把手机号码，密码发送给后台
+          this.$http.post('/api/login',api_login).then(response=>{
+              if(response.body.status == 200){
+                  //sessionstorage用于临时保存网页数据  当网页关闭后 存储的数据也会清除
+                  //sessionStorage.setItem('uid',response.body.data.uid);
+                  alert(response.data.msg);
+                   this.$router.push({name:'Index'});
+
+              }else{
+                  alert(response.data.msg);
+              }
+              console.log('success');
+              console.log(response);
+          },error=>{
+              console.log(error);
+          })
+      },
+
+  },
+  mounted(){
+
   }
+
+
+
 }
 </script>
 
