@@ -150,7 +150,6 @@ export default {
   mounted() {
     this.$http.post('/api/reg/getImgCodeUrl').then(success=>{
       console.log(success)
-      alert('成功。')
     },error=>{
       layui.layer.msg('请求失败，请重试。')
     })
