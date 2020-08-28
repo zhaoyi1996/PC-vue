@@ -66,7 +66,8 @@
             <div class="layui-form-item">
               <div class="layui-input-block">
                 <input type="text"  name="" lay-verify="required" id="imgCode" placeholder="验证码" autocomplete="off" class="layui-input">
-                <img src="https://fly.layui.com/auth/imagecode?t=1542856673772">
+                <img :src="imageCodeUrl" @click="changeImgCode()">
+<!--                https://fly.layui.com/auth/imagecode?t=1542856673772-->
               </div>
             </div>
             <div class="layui-form-item">
@@ -93,19 +94,24 @@
             </div>
             <div class="layui-form-item">
               <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="*" onclick="return false">登录</button>
+                <button class="layui-btn" lay-submit lay-filter="*" onclick="return false">注册</button>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <div class="layui-input-block">
+                <button class="obtain layui-btn" lay-submit lay-filter="*" onclick="return false">登录</button>
               </div>
             </div>
             <!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览 -->
           </form>
-          <div class="other-login">
-            <a href="#">
-              <img src="@/assets/static/images/load1.png">
-            </a>
-            <a href="#">
-              <img src="@/assets/static/images/load2.png">
-            </a>
-          </div>
+<!--          <div class="other-login">-->
+<!--            <a href="#">-->
+<!--              <img src="@/assets/static/images/load1.png">-->
+<!--            </a>-->
+<!--            <a href="#">-->
+<!--              <img src="@/assets/static/images/load2.png">-->
+<!--            </a>-->
+<!--          </div>-->
         </div>
       </div>
     </div>
@@ -121,14 +127,17 @@ export default {
   name: 'Login',
   data () {
     return {
-      //请求连接
-      codeUrl:'http://api.practice1.com/',
+      //图片验证码地址
+      imageCodeUrl:'http://api.practice1.com/reg/imageCode',
       phone:'',
       password:'',
       code:'',
     }
   },
   methods:{
+    changeImgCode:function(){
+      this.imageCodeUrl=this.imageCodeUrl+'?rand='+Math.random()
+    },
     sendCode:function(){
       if(this.phone==''){
         alert('请输入手机号，进行收取验证码。')
@@ -139,7 +148,12 @@ export default {
     }
   },
   mounted() {
-    
+    this.$http.post('/api/reg/getImgCodeUrl').then(success=>{
+      console.log(success)
+      alert('成功。')
+    },error=>{
+      layui.layer.msg('请求失败，请重试。')
+    })
   }
 }
 </script>

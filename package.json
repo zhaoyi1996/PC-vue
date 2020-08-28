@@ -10,7 +10,11 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "ajv": "^6.12.4",
+    "layui-layer": "^1.0.9",
+    "layui-src": "^2.5.5",
     "vue": "^2.5.2",
+    "vue-layer": "^1.2.0",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
