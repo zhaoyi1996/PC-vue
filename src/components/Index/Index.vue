@@ -81,10 +81,9 @@
             <div class="main">
               <div class="list-item" id="LAY_demo2">
                 <template v-for="(v,k) in info">
+                  <router-link :to="{name:'Details',query:{news_id:v.news_id}}">
                 <div class="item">
-                  <a href="details.html">
                     <img style="height: 100px;width: 200px;" :src="v.news_image">
-                  </a>
                   <div class="item-info">
                     <h4><a href="details.html">{{ v.news_title }}</a></h4>
                     <div class="b-txt">
@@ -100,7 +99,12 @@
                     </div>
                   </div>
                 </div>
+                  </router-link>
                 </template>
+                <div class="b-txt">
+                  <span class="label" @click="more">加载更多。。。</span>
+
+                </div>
               </div>
             </div>
           </div>
@@ -209,7 +213,9 @@ export default {
     return {
         info:[],
         news_lunbo:[],
+        page:2,
     }
+
   },
   //页面加载
   mounted(){
@@ -230,7 +236,9 @@ export default {
     },error=>{
         console.log(error);
         return false;
-    })
+    });
+    //热门咨询
+    this.$http.post('/api/heat')
   },
   methods:{
     timetoDate(time){
@@ -246,6 +254,16 @@ export default {
       let seconds=obj.getSeconds();
       return ''+year+'-'+month+'-'+day+' '+hour+':'+minutes+':'+seconds;
     },
+    //加载更多
+    more:function(){
+      let pages=this.page++;
+      this.$http.post('/api/',{page:pages}).then(response=>{
+        this.info=this.info.concat(response.body.data);
+        console.log(this.info);
+      },error=>{
+        console.log(error);
+      });
+    }
   },
   watch: {
     info: function(val){
