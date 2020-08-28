@@ -56,35 +56,24 @@
 
     <div class="micronews-login-container">
       <div class="form-box">
-
-        <h3>登录</h3>
-
         <h3>注册</h3>
         <div class="wrap">
           <form class="layui-form"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
             <div class="layui-form-item">
               <div class="layui-input-block">
-
-                <input type="text" name="" lay-verify="required|phone" id="phone" v-model="phone" placeholder="请输入手机号" autocomplete="off" class="layui-input">
                 <input type="text" name="" v-model="phone" lay-verify="required|phone" id="phone" placeholder="请输入手机号" autocomplete="off" class="layui-input">
 
               </div>
             </div>
             <div class="layui-form-item">
               <div class="layui-input-block">
-
-                <input type="text"  name="" lay-verify="required" id="imgCode" v-model="imgCode" autocomplete="off" class="layui-input">
                 <input type="text"  name="" lay-verify="required" id="imgCode" placeholder="验证码" autocomplete="off" class="layui-input">
-
-                <img src="https://fly.layui.com/auth/imagecode?t=1542856673772">
+                <img :src="imageCodeUrl" @click="changeImgCode()">
+<!--                https://fly.layui.com/auth/imagecode?t=1542856673772-->
               </div>
             </div>
             <div class="layui-form-item">
               <div class="layui-input-block">
-
-                <input type="text"  name="" lay-verify="required" placeholder="请输入短信验证码" autocomplete="off" class="layui-input">
-                <input type="button" v-model="noteCode" id="veriCodeBtn" name="" value="验证码" class="obtain layui-btn">
-
                 <input type="text"  name="" v-model="code" lay-verify="required" placeholder="请输入短信验证码" autocomplete="off" class="layui-input">
                 <input type="button" @click="sendCode"  id="veriCodeBtn" name="" value="验证码" class="obtain layui-btn">
               </div>
@@ -109,23 +98,24 @@
             </div>
             <div class="layui-form-item">
               <div class="layui-input-block">
-
                 <button class="layui-btn" lay-submit lay-filter="*" onclick="return false">注册</button>
-
-                <button class="layui-btn" lay-submit lay-filter="*" onclick="return false">登录</button>
-
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <div class="layui-input-block">
+                <button class="obtain layui-btn" lay-submit lay-filter="*" onclick="return false">登录</button>
               </div>
             </div>
             <!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览 -->
           </form>
-          <div class="other-login">
-            <a href="#">
-              <img src="@/assets/static/images/load1.png">
-            </a>
-            <a href="#">
-              <img src="@/assets/static/images/load2.png">
-            </a>
-          </div>
+<!--          <div class="other-login">-->
+<!--            <a href="#">-->
+<!--              <img src="@/assets/static/images/load1.png">-->
+<!--            </a>-->
+<!--            <a href="#">-->
+<!--              <img src="@/assets/static/images/load2.png">-->
+<!--            </a>-->
+<!--          </div>-->
         </div>
       </div>
     </div>
@@ -142,18 +132,19 @@ export default {
   name: 'register',
   data() {
     return {
-      phone: '15932818907',
-      imgCode: '请输入图片验证码',
-      noteCode: '请输入短信验证码',
-      //请求连接
-      codeUrl: 'http://api.practice1.com/',
-      password: '',
-      code: '',
+      //图片验证码地址
+      imageCodeUrl:'http://api.practice1.com/reg/imageCode',
+      phone:'',
+      password:'',
+      code:'',
     }
   },
-  methods: {
-    sendCode: function () {
-      if (this.phone == '') {
+  methods:{
+    changeImgCode:function(){
+      this.imageCodeUrl=this.imageCodeUrl+'?rand='+Math.random()
+    },
+    sendCode:function(){
+      if(this.phone==''){
         alert('请输入手机号，进行收取验证码。')
       }
       if (this.phone.length != 11) {
@@ -163,14 +154,12 @@ export default {
   },
   //页面加载事件
   mounted() {
-    //获取二维码
-    this.$http.post('/api', {}).then(success => {
-      console.log(success);
-    }, error => {
-      alert(111);
+    this.$http.post('/api/reg/getImgCodeUrl').then(success=>{
+      console.log(success)
+    },error=>{
+      layui.layer.msg('请求失败，请重试。')
     })
-
-  },
+  }
 }
 </script>
 
