@@ -116,56 +116,12 @@
                 </div>
                 <div class="layui-card-body">
                   <ul class="list-box">
+                    <template v-for="(v,k) in heat">
                     <li class="list">
-
-                      <a href="list.html">你和我的倾城时光</a><i class="heat-icon"></i>
-
-                    </li>
-                    <li class="list">
-
-                      <a href="list.html">顶级酒店内幕被曝光</a><i class="heat-icon"></i>
-
-                    </li>
-                    <li class="list">
-
-                      <a href="list.html">王思聪抽奖</a><i class="heat-icon"></i>
-
-                    </li>
-                    <li class="list">
-
-                      <a href="list.html">王者荣耀上官婉儿</a>
-
-                    </li>
-                    <li class="list">
-
-                      <a href="list.html">妻子的浪漫旅行</a>
-
-                    </li>
-                    <li class="list">
-
-                      <a href="list.html">海底捞回应员工偷拍</a>
-
-                    </li>
-                    <li class="list">
-
-                      <a href="list.html">扎克伯格禁止高管用iPhone</a>
-
-                    </li>
-                    <li class="list">
-
-                      <a href="list.html">王思聪抽手机壳送手机</a>
-
-                    </li>
-                    <li class="list">
-
-                      <a href="list.html">每天闹钟20次提醒男友抽奖 </a>
-
-                    </li>
-                    <li class="list">
-
-                      <a href=list.html#">詹姆斯收藏比赛用球</a>
-
-                    </li>
+                      <router-link :to="{name:'Details',query:{news_id:v.news_id}}">{{v.news_title}}</router-link>
+                      <template v-if="v.sort<=3"><i  class="heat-icon"></i></template>
+                        </li>
+                    </template>
                   </ul>
                 </div>
               </div>
@@ -212,6 +168,7 @@ export default {
   data () {
     return {
         info:[],
+        heat:[],
         news_lunbo:[],
         page:2,
     }
@@ -225,7 +182,7 @@ export default {
       alert(error);
     });
     layui.use('index',function(){
-        var index = layui.index;
+        let index = layui.index;
         index.banner()
         index.seachBtn()
         index.arrowutil()
@@ -238,7 +195,11 @@ export default {
         return false;
     });
     //热门咨询
-    this.$http.post('/api/heat')
+    this.$http.post('/api/heat',{}).then(success=>{
+      this.heat=success.body.data;
+    },error=>{
+      console.log(error);
+    });
   },
   methods:{
     timetoDate(time){
