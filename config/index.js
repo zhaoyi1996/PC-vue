@@ -10,13 +10,14 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
+      // 请求带api的全部按照一下规则处理
       '/api':{
         // 转发到该域名
-        target: 'http://team.yisirdisco.cn/',
+        target: 'http://api.practice1.com',
         // 开启代理
         changeOrigin: true,
         pathRewrite: {
-          '^/api': ''
+          '^/api' : ''
         }
       }
     },
